@@ -1,0 +1,10 @@
+hi im cole i did the hardware and python
+we used a pi 3, and printed this neat chassis
+we were originally going to connect to serial via one of the STM32's serial UARTs, but the only lane with pins is used by the remote, 
+	so we ended up connecting via USB to the pi, instead of splicing into the serial lane. 
+I tried to use an arduino to read the UART data coming out of the ESC, but it just wasn't gonna happen because the data is encoded, so I ended up just using a PyVESC library
+The library installs with only half the python scripts it's supposed to have, so most of our script is the missing classes from the source, to make it work. 
+The stock library also relies on a 61-byte payload, but since I am running FW a year newer than this library, it has been changed to 78 bytes; that took a while to figure out
+A lot of the data was jumbled coming in, but the battery current in reading was clear, so since the ESC uses regenerative braking, we can judge movement based on whether the battery is at idle. 
+
+audio is played with python-vlc; it just plays when the board is moving and does not play when the board does not move
